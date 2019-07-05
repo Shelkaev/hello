@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %} Главная {% endblock %}
+{% block main %}
+		<!-- Banner -->
+			<section id="banner">
+				<h2>Danse Danse</h2>
+				<p>Школа кубинских танцев.</p>
+				<ul class="actions">
+					<li><a href="{% url 'contact' %}" class="button special">Напиcать сообщение</a></li>
+					<li><a href="#" class="button">Узнать больше</a></li>
+				</ul>
+			</section>
+
+		<!-- Main -->
+			<section id="main" class="container">
+		
+				<section class="box special">
+					<header class="major">
+						<h2>Научим танцевать сальсу и бачату.
+						<br />
+						10 лет опыта и стажировки на Кубе </h2>
+						<p>Социальные танцы сильно отличаются от бальных - это простые танцы для взрослых. Это не спорт и не шоу, это - развлечение.<br />
+						При этом можно легко и приятно поддерживать себя в форме.</p>
+					</header>
+					<span class="image featured"><img src="{% static 'images/pic01.jpg' %}" alt="" /></span>
+				</section>
+						
+				<section class="box special features">
+					<div class="features-row">
+						<section>
+							<span class="icon major fa-bolt accent2"></span>
+							<h3>Богатый опыт</h3>
+							<p>10 лет опыта преподавания и стажировки на Кубе помогли нам выработать эффективную методику, по которой мы обучили 500+ человек.</p>
+						</section>
+						<section>
+							<span class="icon major fa-area-chart accent3"></span>
+							<h3>Много людей</h3>
+							<p>Dance Dance - самая большая школа Самары, поэтому ты точно обретешь новые знакомства и друзей, а может встретишь свою судьбу!</p>
+						</section>
+					</div>
+					<div class="features-row">
+						<section>
+							<span class="icon major fa-cloud accent4"></span>
+							<h3>Новые впечатления</h3>
+							<p>Наполни свою жизнь позитивными людьми и эмоциями!</p>
+						</section>
+						<section>
+							<span class="icon major fa-lock accent5"></span>
+							<h3>Забудь о стеснении</h3>
+							<p>Чем больше занимаешься, тем увереннее становишься. Ты инициатор. Ты решаешь, что танцевать. Ты ведешь, женщина идет. Инициатива заложена в тебе природой! И это то, что в тебе нравится женщинам!</p>
+						</section>
+					</div>
+				</section>
+
+		<!-- CTA -->
+{% include 'inc_send_email.html' %}
+{% endblock %}

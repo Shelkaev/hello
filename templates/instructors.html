@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %} Преподаватели {% endblock %}
+{% block main %}
+		<br/><br/>
+		<!-- Main -->
+		<br/><br/><br/><br/><br/><br/><br/>
+		<section id="main" class="container 75%">
+				<header>
+				<h2>Наши преподаватели:</h2>
+				<p>готовы ответить на все ваши вопросы...</p>
+				</header>
+		<div class="row">
+			{% for i in instructors_list %}
+			<div class="12u">
+				<section class="box special features">
+					<p><span class="image left"><img src="{{ i.photo.url }}" alt="" /></span></p>
+					<h3>{{ i.name }} {{ i.surname }}</h3>
+					<ul class="alt">
+					{% for j in i.course.all %}
+						<li>{{ j }}</li>
+					{% endfor %}
+					</ul>
+					<p><ul class="actions small">
+						<li><a href="{% url 'instructors_list' %}{{ i.id }}/" class="button small">Подробнее</a></li>
+					</ul></p>
+				</section>
+			</div> 
+			{% endfor %}
+		</div> 
+		</section>
+{% endblock %}
+
+{% static 'img\instructors\{{ i.photo }}' %}
+\static\img\instructors\Мария.jpg

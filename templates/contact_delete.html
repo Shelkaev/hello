@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %} Удалить заявку {% endblock %}
+{% block main %}
+
+		<!-- Main -->	
+		<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+			<section id="main" class="container 75%">
+				<header>
+					<h2>Удаление заявки</h2>
+				</header>
+
+				<div class="box">
+				<h3>Заявка пользователя <strong>{{ contactapply }}</strong> будет удалена</h3><br/>
+					<form method="post">
+					{% csrf_token %}
+						<div class="row uniform">
+							<div class="12u">
+								<ul class="actions align-center">
+								<li><input type="submit" value="Подтвердить" /></li>
+								</ul>
+							</div>
+						</div>
+					</form>
+				</div>
+			</section>
+		
+{% endblock %}	

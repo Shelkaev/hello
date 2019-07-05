@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %} Ученик {% endblock %}
+{% block main %}
+		<br/><br/>
+		<!-- Main -->
+		<br/><br/><br/><br/><br/><br/>
+					<section id="main" class="container">
+				<header>
+					<h2>{{ personal_stud.name }} {{ personal_stud.surname }}</h2>
+						<ul class="alt">
+							<li>Курс - <strong>{{ personal_stud.side }}</strong></li>
+							<li>Руководитель - <strong>{{ personal_stud.lider.name }} {{ personal_stud.lider.surname }}</strong></li>
+						</ul>
+				</header>
+				<div class="box">
+					<div class="box alt"><span class="image"><img src="{{ personal_stud.photo.url }}" alt="" /></span></div>
+					{% if personal_stud.gender == 'М' %}
+					<h3>{{ personal_stud.name }} {{ personal_stud.surname }}, кто он?  </h3>
+					{% else %}
+					<h3>{{ personal_stud.name }} {{ personal_stud.surname }}, кто она? </h3>
+					{% endif %}
+					<p>{{ personal_stud.description|linebreaksbr }} </p>		
+				</div>
+{% include 'inc_send_email.html' %}	
+			</section>
+					
+{% endblock %}

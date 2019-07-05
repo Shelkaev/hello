@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %} Редактировать заявку {% endblock %}
+{% block main %}
+
+		<!-- Main -->	
+		<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+			<section id="main" class="container 75%">
+				<header>
+					<h2>Редактирование заявки</h2>
+				</header>
+
+				<div class="box">
+					{% if messages %}
+						<ul class="messages">
+							{% for message in messages %}
+								<li{% if message.tags %} class="{{ message.tags }}"{% endif %}>
+								{% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}Important: {% endif %}
+								{% autoescape off %}{{ message }}{% endautoescape %}
+								</li>
+							{% endfor %}
+						</ul>
+					{% endif %}
+					<form method="post">
+					{% csrf_token %}
+						<div class="row uniform 50%">
+							<div class="6u 12u(3)">
+								<p> Имя
+								{{ form.name.errors }}
+								{{ form.name }}</p>
+							</div>
+							<div class="6u 12u(3)">
+								<p> Адрес электронной почты 
+								{{ form.email.errors }}
+								{{ form.email }}</p>
+							</div>
+						</div>
+						<div class="row uniform 50%">
+							<div class="12u">
+							Танцевальное направление
+							<div class="select-wrapper">
+							{{ form.course.errors }}
+							{{ form.course }}
+							</div>
+							</div>
+						</div>
+						<div class="row uniform 50%">
+							<div class="12u">
+								<p> Сообщение
+								{{ form.message.errors }}
+								{{ form.message }}</p>
+							</div>
+						</div>
+						<div class="row uniform 50%">
+							<div class="12u">
+								<p>{{ form.subscribe.errors }}
+								{{ form.subscribe }} 
+								<label for="{{ form.subscribe.id_for_label }}">Получать новостную рассылку</label> </p>
+							</div>
+						</div>
+						<div class="row uniform">
+							<div class="12u">
+								<ul class="actions align-center">
+								<li><input type="submit" value="Сохранить" /></li>
+								<li><a href="/contact/{{ contactapply.id }}/delete" class="button special">Удалить</a></li>
+								</ul>
+							</div>
+						</div>
+					</form>
+				</div>
+			</section>
+		
+{% endblock %}	

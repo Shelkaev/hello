@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %} Обратная связь {% endblock %}
+{% block main %}
+
+		<!-- Main -->	
+		<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+			<section id="main" class="container 75%">
+				<header>
+					<h2>Свяжись с нами</h2>
+					<p>Наполни свою жизнь позитивными людьми и эмоциями.</p>
+				</header>
+				
+
+
+				<div class="box">
+					{% if messages %}
+						<ul class="messages">
+							{% for message in messages %}
+								<li{% if message.tags %} class="{{ message.tags }}"{% endif %}>
+								{% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}Important: {% endif %}
+								{% autoescape off %}{{ message }}{% endautoescape %}
+								</li>
+							{% endfor %}
+							{% if error %}
+							<p>{{ error }}</p>
+							{% endif %}
+						</ul>
+					{% endif %}
+					<form method="post">
+					{% csrf_token %}
+						<div class="row uniform 50%">
+							<div class="6u 12u(3)">
+								<p> Имя
+								{{ form.name.errors }}
+								{{ form.name }}</p>
+							</div>
+							<div class="6u 12u(3)">
+								<p> Адрес электронной почты 
+								{{ form.email.error }}
+								{{ form.email }}</p>
+							</div>
+						</div>
+						<div class="row uniform 50%">
+							<div class="12u">
+							Танцевальное направление
+							<div class="select-wrapper">
+							{{ form.course.error }}
+							{{ form.course }}
+							</div>
+							</div>
+						</div>
+						<div class="row uniform 50%">
+							<div class="12u">
+								<p> Сообщение
+								{{ form.message.error }}
+								{{ form.message }}</p>
+							</div>
+						</div>
+						<div class="row uniform 50%">
+							<div class="12u">
+								<p>{{ form.subscribe.error }}
+								{{ form.subscribe }} 
+								<label for="{{ form.subscribe.id_for_label }}">Получать новостную рассылку</label> </p>
+							</div>
+						</div>
+						<div class="row uniform">
+							<div class="12u">
+								<ul class="actions align-center">
+								<li><input type="submit" value="Отправить" /></li>
+								</ul>
+							</div>
+						</div>
+					</form>
+				</div>
+			</section>
+		
+{% endblock %}	

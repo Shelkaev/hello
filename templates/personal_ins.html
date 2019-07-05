@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %} Преподаватели {% endblock %}
+{% block main %}
+		<br/><br/>
+		<!-- Main -->
+		<br/><br/><br/><br/><br/><br/>
+					<section id="main" class="container">
+				<header>
+					<h2>{{ personal_ins.name }} {{ personal_ins.surname }}</h2>
+						<ul class="alt">
+						{% for j in personal_ins.course.all %}
+							<li>{{ j }}</li>
+						{% endfor %}
+						</ul>
+				</header>
+				<div class="box">
+					<div class="box alt"><span class="image"><img src="{{ personal_ins.photo.url }}" alt="" /></span></div>
+					{% if personal_ins.gender == 'М' %}
+					<h3>Как я попал в социальные танцы? </h3>
+					{% else %}
+					<h3>Как я попала в социальные танцы? </h3>
+					{% endif %}
+					<p>{{ personal_ins.description|linebreaksbr }} </p>
+					<div class="row">
+						<div class="6u 12u(3)">
+							<h3>У нас есть чем заняться...</h3>
+							<p>Мы в Dan Dance на самом деле преподаем много разных танцев, а не только сальсу и бачату. Один из них - ча-ча-ча. На этой неделе во всех продолжающих и продвинутых группах мы будем его изучать или апгрейдить. Танец очень прикольный, жаль редко кто сейчас умеет его танцевать на Кубе. Однако кубинские музыканты по прежнему продолжают вставлять в свои новые альбомы композиции в этом жанре. Кубинская версия сильно отличается и от линейной и (тем более) от бальной. Но все же не так кардинально как танго или самба. Все объяснения по этому поводу у нас происходят на занятиях.</p>
+						</div>
+						<div class="6u 12u(3)">
+							<h3>Если стало интересно...</h3>
+							<p>Записывайтесь на бесплатное занятие по тел. <strong>{{ personal_ins.phone }}</strong>. Или пиши на почту <strong>{{ personal_ins.emaill }}</strong> - лучше один раз попробовать, чем сто раз увидеть</p>
+						</div>
+					</div>
+				</div>
+			</section>
+					
+{% endblock %}
