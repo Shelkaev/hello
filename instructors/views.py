@@ -10,9 +10,12 @@ class InstructorListView(ListView):
 	template_name = 'instructors.html'
 	context_object_name = 'instructors_list'
 
-def instructors_list(request):
-	instructors = Instructor.objects.all()
-	return render (request, 'instructors.html', {'instructors_list':instructors})
+	def get_queryset(self):
+		qs = super().get_queryset()
+		course_id = self.request.GET.get('course_id', None)
+		if course_id:
+			qs = qs.filter(course__id = course_id)
+		return qs
 	
 class InstructorDetailView(DeleteView):
 	model = Instructor
