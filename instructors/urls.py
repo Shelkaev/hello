@@ -15,10 +15,10 @@ Including another URLconf
 """
 
 from django.urls import path, include, re_path
-from instructors.views import instructors_list, personal_ins
+from instructors.views import InstructorListView, InstructorDetailView
 
 
 urlpatterns = [
-	path('instructors/', instructors_list, name='instructors_list'),
-	re_path(r'^instructors/(?P<instructor_id>\d+)/$', personal_ins, name='personal_ins'),
+	path('instructors/', InstructorListView.as_view(), name='instructors_list'),
+	re_path(r'^instructors/(?P<instructor_id>\d+)/$', InstructorDetailView.as_view(), name='personal_ins'),
 ]
