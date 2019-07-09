@@ -3,16 +3,37 @@
 				
 				<h2>У нас обучаются разные люди</h2>
 				<p>Ты всегда найдешь себе компанию по душе. Запишись на бесплатное занятие</p>
-				
-				<form>
+				{% if messages %}
+						<ul class="messages">
+							{% for message in messages %}
+								<li{% if message.tags %} class="{{ message.tags }}"{% endif %}>
+								{% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}Important: {% endif %}
+								{% autoescape off %}{{ message }}{% endautoescape %}
+								</li>
+							{% endfor %}
+							{% if error %}
+							<p>{{ error }}</p>
+							{% endif %}
+				{% endif %}
+						</ul>
+				<form method="post">
+					{% csrf_token %}
 					<div class="row uniform 50%">
-						<div class="8u 12u(3)">
-							<input type="email" name="email" id="email" placeholder="Мобильный телефон или email" />
+						<div class="6u 12u(3)">
+						{{ form.email }}
 						</div>
-						<div class="4u 12u(3)">
-							<input type="submit" value="Отправить" class="fit" />
+						<div class="6u 12u(3)">
+						<input type="submit" value="Отправить" class="fit" />
 						</div>
 					</div>
 				</form>
 				
 			</section>
+
+					<!-- <div class="row uniform 50%">
+						<div class="8u 12u(3)">
+							<input type="email" name="email" id="email" placeholder="Мобильный телефон или email" />
+						</div>
+						<div class="4u 12u(3)">
+							<input type="submit" value="Отправить" class="fit" />
+						</div> -->

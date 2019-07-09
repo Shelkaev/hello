@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseNotFound
 from instructors.models import Instructor
-from django.views.generic import DeleteView
+from django.views.generic import DetailView
 from django.views.generic import ListView
 # Create your views here.
 
@@ -17,7 +17,7 @@ class InstructorListView(ListView):
 			qs = qs.filter(course__id = course_id)
 		return qs
 	
-class InstructorDetailView(DeleteView):
+class InstructorDetailView(DetailView):
 	model = Instructor
 	template_name = 'personal_ins.html'
 	pk_url_kwarg = 'instructor_id'
